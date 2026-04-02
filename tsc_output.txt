@@ -1,0 +1,5 @@
+src/agents/character.ts(45,41): error TS2740: Type 'WorkersAIBinding' is missing the following properties from type 'Ai<AiModels>': aiGatewayLogId, gateway, aiSearch, autorag, and 2 more.
+src/agents/character.ts(150,41): error TS2740: Type 'WorkersAIBinding' is missing the following properties from type 'Ai<AiModels>': aiGatewayLogId, gateway, aiSearch, autorag, and 2 more.
+src/agents/soundscape.ts(36,41): error TS2740: Type 'WorkersAIBinding' is missing the following properties from type 'Ai<AiModels>': aiGatewayLogId, gateway, aiSearch, autorag, and 2 more.
+src/agents/voice-chat.ts(165,41): error TS2740: Type 'WorkersAIBinding' is missing the following properties from type 'Ai<AiModels>': aiGatewayLogId, gateway, aiSearch, autorag, and 2 more.
+src/client.tsx(1,8): error TS2882: Cannot find module or type declarations for side-effect import of './styles.css'.

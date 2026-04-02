@@ -1,0 +1,71 @@
+{
+	"$schema": "../../node_modules/wrangler/config-schema.json",
+	"name": "rehearse",
+	"main": "src/server.ts",
+	"compatibility_date": "2026-01-28",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Bindings
+	"ai": {
+		"binding": "AI",
+		"remote": true
+	},
+	"r2_buckets": [
+		{
+			"binding": "AUDIO_BUCKET",
+			"bucket_name": "rehearse-audio"
+		}
+	],
+	"kv_namespaces": [
+		{
+			"binding": "REHEARSE_META",
+			"id": "1889483b27ac4215a057182056342d55"
+		},
+		{
+			"binding": "PERSONAS_KV",
+			"id": "f5d972f5663d4e2ea20210508c71a89f"
+		}
+	],
+	"secrets": {
+		"required": [
+			"ELEVENLABS_API_KEY"
+		]
+	},
+	// Static assets — SPA with agent routes handled by the Worker
+	"assets": {
+		"directory": "./dist",
+		"not_found_handling": "single-page-application",
+		"run_worker_first": [
+			"/agents/*",
+			"/api/*"
+		]
+	},
+	// Durable Objects — binding name MUST match class name for routeAgentRequest to work
+	"durable_objects": {
+		"bindings": [
+			{
+				"class_name": "AudienceMember",
+				"name": "AudienceMember"
+			},
+			{
+				"class_name": "RehearseSession",
+				"name": "RehearseSession"
+			},
+			{
+				"class_name": "SharedSession",
+				"name": "SharedSession"
+			}
+		]
+	},
+	"migrations": [
+		{
+			"new_sqlite_classes": [
+				"AudienceMember",
+				"RehearseSession",
+				"SharedSession"
+			],
+			"tag": "v1"
+		}
+	]
+}
